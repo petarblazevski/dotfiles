@@ -3,6 +3,7 @@ alias code="cd ~/Code"
 
 ## LARAVEL
 alias art="php artisan"
+alias migrate="php artisan migrate"
 
 ## GLOBAL ALIASES
 alias behat="vendor/bin/behat"
