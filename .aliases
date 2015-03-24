@@ -1,5 +1,8 @@
 ## GENERAL ALIASES
 alias code="cd ~/Code"
 
+## LARAVEL
+alias art="php artisan"
+
 ## GLOBAL ALIASES
 alias behat="vendor/bin/behat"
