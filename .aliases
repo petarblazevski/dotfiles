@@ -1,6 +1,9 @@
 ## GENERAL ALIASES
 alias code="cd ~/Code"
 
+## PROJECTS
+alias webmgr="cd ~/Code/vm-webmgr/public/html/webmgr"
+
 ## LARAVEL
 alias art="php artisan"
 alias serve="php artisan serve"
