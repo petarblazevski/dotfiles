@@ -1,80 +1,61 @@
-### Aliases
+# Interactive operation...
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
-# Open specified files in Sublime Text
-# "s ." will open the current directory in Sublime
-alias s='subl .'
+# Default to human readable figures
+alias du='du -khs * | sort -h | less'
+alias df='df -kTh'
 
-# Quicker navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+# Misc :)
+alias less='less -r'                          # raw control characters
+alias whence='type -a'                        # where, of a sort
+alias grep='grep --color'                     # show differences in colour
+alias egrep='egrep --color=auto'              # show differences in colour
+alias fgrep='fgrep --color=auto'              # show differences in colour
 
-### Prompt Colors 
-# Modified version of @gf3’s Sexy Bash Prompt 
-# (https://github.com/gf3/dotfiles)
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-        export TERM=gnome-256color
-elif infocmp xterm-256color >/dev/null 2>&1; then
-        export TERM=xterm-256color
-fi
+# Some shortcuts for different directory listings
+alias ls='ls -hCF --color=tty'                 # classify files in colour
+alias dir='ls -d --color=auto --format=vertical */'
+alias vdir='ls --color=auto --format=long'
+alias l='ls -CF'                              #
 
-if tput setaf 1 &> /dev/null; then
-        tput sgr0
-        if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-                BLACK=$(tput setaf 190)
-                MAGENTA=$(tput setaf 9)
-                ORANGE=$(tput setaf 172)
-                GREEN=$(tput setaf 190)
-                PURPLE=$(tput setaf 141)
-                WHITE=$(tput setaf 0)
-        else
-                BLACK=$(tput setaf 190)
-                MAGENTA=$(tput setaf 5)
-                ORANGE=$(tput setaf 4)
-                GREEN=$(tput setaf 2)
-                PURPLE=$(tput setaf 1)
-                WHITE=$(tput setaf 7)
-        fi
-        BOLD=$(tput bold)
-        RESET=$(tput sgr0)
-else
-        BLACK="\033[01;30m"
-        MAGENTA="\033[1;31m"
-        ORANGE="\033[1;33m"
-        GREEN="\033[1;32m"
-        PURPLE="\033[1;35m"
-        WHITE="\033[1;37m"
-        BOLD=""
-        RESET="\033[m"
-fi
+#Useful alias for navigating
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias hh='cd ~'
+alias cs..='cs ..'
+alias cd..='cd ..'
+alias ls='ls --color -hLF --group-directories-first --format=horizontal'
+alias ll='ls -ahlL --color --group-directories-first'
+alias la='ls -a --color --group-directories-first'
 
-export BLACK
-export MAGENTA
-export ORANGE
-export GREEN
-export PURPLE
-export WHITE
-export BOLD
-export RESET
+# git macros
+alias ga="git add --all $args"
+alias gb="git branch $args"
+alias gc="git commit -ev $args"
+alias gck="git checkout $args"
+alias gd="git diff -p --stat"
+alias gdc="git diff --cached"
+alias gf="git fetch $args"
+alias gl="git log --graph --oneline --decorate $args"
+alias gpl="git pull $args"
+alias gps="git push $args"
+alias gr="git remote -v $args"
+alias gs="git status -b $args"
 
-# Git branch details
-function parse_git_dirty() {
-        [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
-}
-function parse_git_branch() {
-        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
+## GENERAL ALIASES
+alias code="cd /c/Code"
 
-# Change this symbol to something sweet. 
-# (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="⚡ "
-
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol\[$RESET\]"
-export PS2="\[$ORANGE\]→ \[$RESET\]"
+## PROJECTS
 
 
-### Misc
+## LARAVEL
+alias art="php artisan"
+alias serve="php artisan serve"
+alias migrate="php artisan migrate"
+alias tinker="php artisan tinker"
 
-# Only show the current directory's name in the tab 
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+## GLOBAL ALIASES
+alias behat="vendor/bin/behat"
