@@ -2,7 +2,6 @@ source ~/.config/fish/alias.fish
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
 end
 
 fish_add_path /opt/homebrew/bin
@@ -26,7 +25,7 @@ set -x PATH $PATH $HOME/.dotnet/tools
 # JetBrains
 set -x PATH $PATH $HOME/.jetbrains
 
-# Zoxide
-zoxide init --cmd cd fish | source
-
+# # Zoxide
+# zoxide init --cmd cd fish | source
+#
 starship init fish | source
